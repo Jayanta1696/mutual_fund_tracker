@@ -42,7 +42,8 @@ class MfTracker:
     def save_files(self, df_list, each_fund, today):
         df_final = pd.concat(df_list)
         target_dir = os.path.join(os.getcwd(), each_fund[:each_fund.find('/')] + '_outputs')
-        os.mkdir(target_dir)
+        if not os.path.isdir(target_dir):
+            os.mkdir(target_dir)
         df_final.to_csv(os.path.join(target_dir, f'{today}.csv'), index=False)
         logger.info(f'{each_fund}_file_saved')
 
