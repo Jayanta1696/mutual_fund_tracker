@@ -11,18 +11,20 @@ logger = logging.getLogger(__name__)
 
 class MfTracker:
     def __init__(self):
-        self.types_of_mf = ['large-cap/32', 'mid-cap/35', 'small-cap/36', 'large-and-midcap/33',
-                            'multi-cap/34', 'focused/77', 'value-oriented/37']
-        self.website = "https://www.etmoney.com/mutual-funds/equity/"
+        self.types_of_mf = ['xyz']
+        self.website = "abc"
         pass
 
     def get_fund_web_soup(self, fund_link):
+        fund_link = 'pqr'
         page = requests.get(fund_link)
         soup = BeautifulSoup(page.content, 'html.parser')
+        print(soup)
+        print(soup)
         return soup
 
     def get_left_table(self, fund_soup):
-        div_tag = fund_soup.find("div", attrs={"class": "mfSceme-key-parameters mfSceme-key-parameters-table"})
+        div_tag = fund_soup.find("div", attrs={"class": "ghj"})
         perf_dfs = pd.read_html(str(div_tag))
         for perf_df in perf_dfs:
             perf_df = perf_df.T
@@ -31,7 +33,7 @@ class MfTracker:
         return perf_df
 
     def get_more_perf_params(self, fund_soup, perf_df):
-        params = fund_soup.find("ul", attrs={"class": "inline-list", "id": "performance-indicators-list"})
+        params = fund_soup.find("ul", attrs={"class": "inline-list", "id": "hi"})
         for perf_param in params.findAll("li"):
             # lets get std. dev, alpha, beta, sharpe, sortino
             perf_param = perf_param.get_text()
