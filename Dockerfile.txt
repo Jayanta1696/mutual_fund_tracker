@@ -1,7 +1,16 @@
 # syntax=docker/dockerfile:1
+<<<<<<< HEAD
+FROM python:3.8-slim-buster
+WORKDIR ./
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+COPY . .
+CMD ["python3", "-m", "main", "run", "--host=0.0.0.0"]
+=======
 FROM python:3.9-slim-buster
 WORKDIR /app
 COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 COPY . .
 CMD ["python3", "-m", "et_money/main", "run", "--host=0.0.0.0"]
+>>>>>>> 4543d6bc8a03f11a2248d9f1a2088e6318be761a

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dijkstra-deployment
+  labels:
+    app: second-container
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: second-container
+  template:
+    metadata:
+      labels:
+        app: second-container
+    spec:
+      containers:
+      - name: second-container
+        image: jayanta96/second-image:v1.2 
+        imagePullPolicy: Always

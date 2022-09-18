@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: suspicious-dijkstra
+spec:
+  containers:
+    - name: second-container
+      image: jayanta96/second-image:v1.2
